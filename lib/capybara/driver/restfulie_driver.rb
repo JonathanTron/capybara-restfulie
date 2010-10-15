@@ -2,6 +2,9 @@ require 'restfulie'
 
 class Capybara::Driver::Restfulie < Capybara::Driver::Base
   class Node < Capybara::Driver::RackTest::Node
+    def click
+      driver.process(:get, self[:href].to_s) if self[:href].present?
+    end
   end
 
   attr_accessor :as, :follow
@@ -91,6 +94,8 @@ class Capybara::Driver::Restfulie < Capybara::Driver::Base
   alias_method :source, :body
   
   def response_headers
+    # Needed as Capybara checks for Content-Type, but restfulie headers are downcased
+    response.headers["Content-Type"] = response.headers["content-type"]
     response.headers
   end
 
