@@ -19,9 +19,8 @@ task :default => :spec
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
-  version = ""
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "capybara-restfulie #{version}"
+  rdoc.title = "capybara-restfulie"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
