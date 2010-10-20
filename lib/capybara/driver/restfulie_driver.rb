@@ -1,4 +1,6 @@
-require 'restfulie'
+require "logger"
+require "restfulie/common"
+require "restfulie/client"
 
 class Capybara::Driver::Restfulie < Capybara::Driver::Base
   class Node < Capybara::Driver::RackTest::Node
